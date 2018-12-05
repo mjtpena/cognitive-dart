@@ -17,8 +17,9 @@ class TranslateTextService {
     final response =
         await apiRequest(host + route, jsonArrayRequest, subscriptionKey);
 
-    var responseTrimmed = response.substring(1, response.length - 1);
-    return TranslateTextResponse.fromJson(json.decode(responseTrimmed));
+    List<dynamic> responseLists = json.decode(response);
+
+    return TranslateTextResponse.fromJson(responseLists.first);
   }
 
   Future<String> apiRequest(
