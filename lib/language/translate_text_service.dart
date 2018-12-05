@@ -8,15 +8,17 @@ part "translate_text_response.dart";
 
 class TranslateTextService {
   String host = "https://api.cognitive.microsofttranslator.com";
-  String route = "/translate?api-version=3.0&to=de&to=it";
+  String route =
+      "/translate?api-version=3.0&to="; //TODO: Handle multiple languages gracefully
 
   Future<List<TranslateTextResponse>> fetch(
       List<TranslateTextRequest> translateTextRequest,
+      String languageCode,
       String subscriptionKey) async {
     List<TranslateTextResponse> textResponses = [];
 
-    final response =
-        await apiRequest(host + route, translateTextRequest, subscriptionKey);
+    final response = await apiRequest(
+        host + route + languageCode, translateTextRequest, subscriptionKey);
 
     List<dynamic> responseLists = json.decode(response);
 
@@ -30,10 +32,7 @@ class TranslateTextService {
   }
 
   Future<String> apiRequest(
-      //TODO: Move subscriptionkey to headers
-      String url,
-      List jsonMap,
-      String subscriptionKey) async {
+      String url, List jsonMap, String subscriptionKey) async {
     HttpClient httpClient = new HttpClient();
     HttpClientRequest request = await httpClient.postUrl(Uri.parse(url));
     request.headers.set('content-type', 'application/json');
