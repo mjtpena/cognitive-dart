@@ -10,20 +10,30 @@ class TranslateTextService {
   String host = "https://api.cognitive.microsofttranslator.com";
   String route = "/translate?api-version=3.0&to=de&to=it";
 
-  Future<TranslateTextResponse> fetch(
-      Map<String, dynamic> message, String subscriptionKey) async {
-    List jsonArrayRequest = [message];
+  Future<List<TranslateTextResponse>> fetch(
+      List<TranslateTextRequest> translateTextRequest,
+      String subscriptionKey) async {
+    List<TranslateTextResponse> textResponses = [];
 
     final response =
-        await apiRequest(host + route, jsonArrayRequest, subscriptionKey);
+        await apiRequest(host + route, translateTextRequest, subscriptionKey);
 
     List<dynamic> responseLists = json.decode(response);
 
-    return TranslateTextResponse.fromJson(responseLists.first);
+    for (var item in responseLists) {
+      TranslateTextResponse translateTextResponse =
+          TranslateTextResponse.fromJson(item);
+      textResponses.add(translateTextResponse);
+    }
+
+    return textResponses;
   }
 
   Future<String> apiRequest(
-      String url, List jsonMap, String subscriptionKey) async {
+      //TODO: Move subscriptionkey to headers
+      String url,
+      List jsonMap,
+      String subscriptionKey) async {
     HttpClient httpClient = new HttpClient();
     HttpClientRequest request = await httpClient.postUrl(Uri.parse(url));
     request.headers.set('content-type', 'application/json');

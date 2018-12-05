@@ -6,7 +6,10 @@ void main() {
   test('It translates from English to Spanish', () async {
     String subsKey = "863c1c7b0293450396d16ea6d8794dbb";
     final translator = TranslateTextService();
-    final message = TranslateTextRequest(text: "Hello World!").toJson();
+    final message = [
+      TranslateTextRequest(text: "Hello World!"),
+      TranslateTextRequest(text: "How are you?")
+    ];
     var response = await translator.fetch(message, subsKey);
     expect(response, isNotNull);
   });
