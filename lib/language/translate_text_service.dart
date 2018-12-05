@@ -9,7 +9,8 @@ part "translate_text_response.dart";
 class TranslateTextService {
   String host = "https://api.cognitive.microsofttranslator.com";
   String route = "/translate?api-version=3.0&to=de&to=it";
-  static String subscriptionKey = "863c1c7b0293450396d16ea6d8794dbb";
+  static String subscriptionKey =
+      "863c1c7b0293450396d16ea6d8794dbb"; //This is just for experiment, this is just a free tier
   Map<String, String> headers = {"Ocp-Apim-Subscription-Key": subscriptionKey};
 
   Future<TranslateTextResponse> fetch(Map<String, dynamic> message) async {
