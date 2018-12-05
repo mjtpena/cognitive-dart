@@ -40,12 +40,4 @@ class TranslateTextService {
       throw Exception(response.reasonPhrase);
     }
   }
-
-  Map dict(List l) {
-    final m = {};
-    l.forEach((e) {
-      m[e[0]] = e[1];
-    });
-    return m;
-  }
 }
