@@ -7,7 +7,6 @@ void main() {
     final translator = TranslateTextService();
     final message = TranslateTextRequest(text: "Hello World!").toJson();
     var response = await translator.fetch(message);
-    print(response);
-    expect(response, isNotNull);
+    expect(response.translations, isNotNull);
   });
 }

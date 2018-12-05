@@ -32,7 +32,7 @@ class TranslateTextResponse {
 
 class DetectedLanguage {
   String language;
-  int score;
+  double score;
 
   DetectedLanguage({this.language, this.score});
 

@@ -12,13 +12,14 @@ class TranslateTextService {
   static String subscriptionKey = "863c1c7b0293450396d16ea6d8794dbb";
   Map<String, String> headers = {"Ocp-Apim-Subscription-Key": subscriptionKey};
 
-  Future<String> fetch(Map<String, dynamic> message) async {
+  Future<TranslateTextResponse> fetch(Map<String, dynamic> message) async {
     List jsonArrayRequest = [message];
 
     final response =
         await apiRequest(host + route, jsonArrayRequest, subscriptionKey);
 
-    return response;
+    var responseTrimmed = response.substring(1, response.length - 1);
+    return TranslateTextResponse.fromJson(json.decode(responseTrimmed));
   }
 
   Future<String> apiRequest(
