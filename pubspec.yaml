@@ -7,8 +7,6 @@ homepage: https://github.com/mjtpena/cognitive-dart
 environment:
   sdk: ">=1.0.0 <3.0.0"
 dependencies:
-  crypto: ">=1.0.0 <3.0.0"
   convert: ">=1.0.0 <3.0.0"
-  http: ^0.12.0
 dev_dependencies:
   test: any
