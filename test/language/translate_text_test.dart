@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:cognitive_services/language/translate_text_service.dart';
+import 'package:cognitive_services/language/translate_text/translate_text_service.dart';
 
 void main() {
   group("Text Translations", () {
