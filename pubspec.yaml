@@ -1,5 +1,5 @@
 name: cognitive_services
-version: 0.0.2
+version: 0.0.2+1
 description: >
   An unofficial Microsoft Azure Cognitive Services wrapper for all Dart platforms (Web, VM, Flutter)
 author: Michael John Peña <mjtpena@outlook.com>
