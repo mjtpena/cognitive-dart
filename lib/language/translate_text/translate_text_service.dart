@@ -40,7 +40,7 @@ class TranslateTextService {
     request.add(utf8.encode(json.encode(jsonMap)));
     HttpClientResponse response = await request.close();
     if (response.statusCode == 200) {
-      String reply = await response.transform(utf8.decoder).join();
+      String reply = await utf8.decoder.bind(response).join();
       httpClient.close();
       return reply;
     } else {
